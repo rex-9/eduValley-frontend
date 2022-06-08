@@ -47,10 +47,18 @@ class _EduPageState extends State<EduPage> {
 
   final _formKey = GlobalKey<FormState>();
   final serverText = TextEditingController();
-  final roomText = TextEditingController(text: "eduValley");
-  final subjectText = TextEditingController(text: "Topic");
-  final nameText = TextEditingController(text: "Happy Student");
-  final emailText = TextEditingController(text: "happystudent@eduvalley.com");
+  final roomText = TextEditingController(
+      // text: "eduValley"
+      );
+  final subjectText = TextEditingController(
+      // text: "Topic"
+      );
+  final nameText = TextEditingController(
+      // text: "Happy Student"
+      );
+  final emailText = TextEditingController(
+      // text: "happystudent@eduvalley.com"
+      );
   final iosAppBarRGBAColor =
       TextEditingController(text: "#0080FF80"); //transparent blue
   bool? isAudioOnly = true;
@@ -582,14 +590,14 @@ class _EduPageState extends State<EduPage> {
                     TextFormField(
                       controller: nameText,
                       validator: (value) => value!.isEmpty
-                          ? 'Display Name should not be empty!'
+                          ? 'Your Name should not be empty!'
                           : null,
                       decoration: inputDecoration.copyWith(
                         prefixIcon: Icon(
                           Icons.person_pin_outlined,
                           size: 30,
                         ),
-                        hintText: 'Display Name',
+                        hintText: 'Your Name',
                       ),
                     ),
                     SizedBox(height: 25),
@@ -677,7 +685,7 @@ class _EduPageState extends State<EduPage> {
               //   controller: nameText,
               //   decoration: InputDecoration(
               //     border: OutlineInputBorder(),
-              //     labelText: "Display Name",
+              //     labelText: "Your Name",
               //   ),
               // ),
               // SizedBox(height: 10),

@@ -46,11 +46,11 @@ class _EduValleyPageState extends State<EduValleyPage> {
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.menu_book_rounded),
-          label: 'Courses',
+          label: 'edu',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.star),
-          label: 'Fun',
+          label: 'Valley',
         ),
       ],
       currentIndex: pageIndex,

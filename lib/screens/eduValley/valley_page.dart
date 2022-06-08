@@ -32,6 +32,7 @@ class _ValleyPageState extends State<ValleyPage> {
   List<dynamic>? _categories;
   String _selectedValue = "All";
   String _search = '';
+  bool _sending = false;
   // String? _comment;
   int _adStarsCount = 0;
   int _adCommentsCount = 0;
@@ -511,6 +512,9 @@ class _ValleyPageState extends State<ValleyPage> {
                             onPressed: () async {
                               // print(_commentController.text.runtimeType);
                               if (_formKey.currentState!.validate()) {
+                                setState(() {
+                                  _sending = true;
+                                });
                                 var data = {
                                   'content': _commentController.text,
                                   'ad_id': "$adId",
@@ -522,6 +526,10 @@ class _ValleyPageState extends State<ValleyPage> {
                                 );
                                 _commentController.clear();
                                 _userCommentedAdsFun();
+                                setState(() {
+                                  _sending = false;
+                                });
+                                Navigator.pop(context);
                               } else {
                                 print('Comment is null');
                               }
@@ -597,22 +605,22 @@ class _ValleyPageState extends State<ValleyPage> {
                                                 color: Colors.black54,
                                                 itemBuilder: (context) {
                                                   return <PopupMenuItem>[
-                                                    PopupMenuItem(
-                                                      child: TextButton.icon(
-                                                        onPressed: () =>
-                                                            print('Edit'),
-                                                        icon: Icon(Icons.edit),
-                                                        label: Text(
-                                                          'Edit',
-                                                          style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 18,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
+                                                    // PopupMenuItem(
+                                                    //   child: TextButton.icon(
+                                                    //     onPressed: () =>
+                                                    //         print('Edit'),
+                                                    //     icon: Icon(Icons.edit),
+                                                    //     label: Text(
+                                                    //       'Edit',
+                                                    //       style: TextStyle(
+                                                    //         color: Colors.white,
+                                                    //         fontWeight:
+                                                    //             FontWeight.bold,
+                                                    //         fontSize: 18,
+                                                    //       ),
+                                                    //     ),
+                                                    //   ),
+                                                    // ),
                                                     PopupMenuItem(
                                                       child: TextButton.icon(
                                                         onPressed: () async {
@@ -622,8 +630,8 @@ class _ValleyPageState extends State<ValleyPage> {
                                                                 "${Network.url}/comments/delete/${comment.id}"),
                                                           );
                                                           print(res.body);
-                                                          Navigator.pop(
-                                                              context);
+                                                          // Navigator.pop(
+                                                          //     context);
                                                         },
                                                         icon:
                                                             Icon(Icons.delete),
