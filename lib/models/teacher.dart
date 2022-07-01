@@ -28,9 +28,7 @@ class Teacher {
 
 Future<List<Teacher>> fetchTeachers(http.Client client) async {
   final response = await client.get(
-    Uri.parse(
-      '${Network.url}/getTeachers',
-    ),
+    Uri.parse('${Network.url}/teachers/get/'),
   );
 
   // Use the compute function to run parseTeachers in a separate isolate.
@@ -42,10 +40,7 @@ Future<List<Teacher>> searchTeachers(
   String role,
 ) async {
   final response = await client.get(
-    Uri.parse(
-      '${Network.url}/searchTeachers/'
-      '$role',
-    ),
+    Uri.parse('${Network.url}/teachers/get/$role'),
   );
 
   // Use the compute function to run parseVideos in a separate isolate.
@@ -60,8 +55,7 @@ List<Teacher> parseTeachers(String responseBody) {
 }
 
 Future<Teacher> fetchTeacher(int id) async {
-  final response =
-      await http.get(Uri.parse('${Network.url}/getTeachers/' '$id'));
+  final response = await http.get(Uri.parse('${Network.url}/teacher/get/$id'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,

@@ -25,7 +25,7 @@ class Poster {
 
 Future<Poster> fetchFirstPoster(int adId) async {
   final response =
-      await http.get(Uri.parse('${Network.url}/getPosters/first/' '$adId'));
+      await http.get(Uri.parse('${Network.url}/poster/first/' '$adId'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -43,10 +43,7 @@ Future<List<Poster>> fetchPosters(
   int adId,
 ) async {
   final response = await client.get(
-    Uri.parse(
-      '${Network.url}/getPosters/'
-      '$adId',
-    ),
+    Uri.parse('${Network.url}/posters/get/$adId'),
   );
 
   // Use the compute function to run parsePosters in a separate isolate.

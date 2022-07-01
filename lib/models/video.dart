@@ -43,11 +43,7 @@ Future<List<Video>> fetchVideos(
   int courseId,
 ) async {
   final response = await client.get(
-    Uri.parse(
-      // "https://jsonplaceholder.typicode.com/photos",
-      '${Network.url}/getVideos/'
-      '$courseId',
-    ),
+    Uri.parse('${Network.url}/videos/get/$courseId'),
   );
 
   // Use the compute function to run parseVideos in a separate isolate.

@@ -34,7 +34,7 @@ class _CheckAuthState extends State<CheckAuth> {
 
   void _checkIfLoggedIn() async {
     // var currentUser;
-    // var res = await Network().getData('/currentUser');
+    // var res = await Network().getData('/user/current');
     // var body = json.decode(res.body);
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     // var token = localStorage.getString('token');
@@ -148,14 +148,14 @@ class _UVScreenState extends State<UVScreen> {
   }
 
   _loadUserData() async {
-    var res = await Network().getData('/currentUser');
+    var res = await Network().getData('/user/current');
     var body = json.decode(res.body);
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     localStorage.setString('currentUser', json.encode(body['currentUser']));
     var user = jsonDecode(localStorage.getString('currentUser')!);
     if (user != null) {
       var res =
-          await Network().getData('/user_courseRecords/$_userId/$_courseId');
+          await Network().getData('/user_course/records/$_userId/$_courseId');
       var body = json.decode(res.body);
       print(body);
       if (body != null) {

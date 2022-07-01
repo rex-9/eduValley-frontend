@@ -25,10 +25,7 @@ class Book {
 
 Future<List<Book>> fetchBooks(http.Client client, int teacherId) async {
   final response = await client.get(
-    Uri.parse(
-      '${Network.url}/getBooks/'
-      '$teacherId',
-    ),
+    Uri.parse('${Network.url}/books/get/$teacherId'),
   );
 
   // Use the compute function to run parseBooks in a separate isolate.

@@ -287,14 +287,12 @@ class _VideoPageState extends State<VideoPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Container(
-                        child: Center(
-                          child: _playView(context),
-                        ),
+                        child: Center(child: _playView(context)),
                         decoration: BoxDecoration(color: Colors.black),
                       ),
                       Flexible(
                         child: Container(
-                          height: 375,
+                          height: 425,
                           child: _listView(),
                         ),
                       ),

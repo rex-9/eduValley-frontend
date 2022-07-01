@@ -327,7 +327,7 @@ class _FreeScreenState extends State<FreeScreen> {
                               ? Text('')
                               : Flexible(
                                   child: Container(
-                                    height: 325,
+                                    height: 400,
                                     child: _listView(),
                                   ),
                                 ),

@@ -32,7 +32,6 @@ class _ValleyPageState extends State<ValleyPage> {
   List<dynamic>? _categories;
   String _selectedValue = "All";
   String _search = '';
-  bool _sending = false;
   // String? _comment;
   int _adStarsCount = 0;
   int _adCommentsCount = 0;
@@ -59,7 +58,7 @@ class _ValleyPageState extends State<ValleyPage> {
 
   _pluckCategories() async {
     final response = await http.get(Uri.parse(
-      '${Network.url}/pluckCategories',
+      '${Network.url}/ads/categories/pluck',
     ));
     setState(() {
       _categories = jsonDecode(response.body);
@@ -335,49 +334,50 @@ class _ValleyPageState extends State<ValleyPage> {
                                             ),
                                           ),
                                         ),
-                                        Row(
-                                          children: [
-                                            TextButton.icon(
-                                              onPressed: () =>
-                                                  _commentSection(ad.id),
-                                              icon: Icon(
-                                                Icons.comment,
-                                                size: 30,
-                                                color:
-                                                    _userCommentedAds != null &&
-                                                            _userCommentedAds!
-                                                                .contains(ad.id)
-                                                        ? Colors.greenAccent
-                                                        : Colors.grey,
-                                              ),
-                                              label: FutureBuilder(
-                                                future: _fetchAdComments(ad.id),
-                                                // initialData: 0,
-                                                builder: (BuildContext context,
-                                                    AsyncSnapshot snapshot) {
-                                                  if (snapshot.hasError) {
-                                                    return Text(
-                                                      // '${snapshot.error}',
-                                                      'error',
-                                                    );
-                                                  } else if (snapshot.hasData) {
-                                                    return Text(
-                                                      '${snapshot.data}',
-                                                    );
-                                                  } else {
-                                                    return SizedBox(
-                                                      height: 15,
-                                                      width: 15,
-                                                      child:
-                                                          CircularProgressIndicator(),
-                                                    );
-                                                  }
-                                                },
-                                              ),
-                                            ),
-                                            const SizedBox(width: 10),
-                                          ],
-                                        ),
+                                        SizedBox(width: 20)
+                                        // Row(
+                                        //   children: [
+                                        //     TextButton.icon(
+                                        //       onPressed: () =>
+                                        //           _commentSection(ad.id),
+                                        //       icon: Icon(
+                                        //         Icons.comment,
+                                        //         size: 30,
+                                        //         color:
+                                        //             _userCommentedAds != null &&
+                                        //                     _userCommentedAds!
+                                        //                         .contains(ad.id)
+                                        //                 ? Colors.greenAccent
+                                        //                 : Colors.grey,
+                                        //       ),
+                                        //       label: FutureBuilder(
+                                        //         future: _fetchAdComments(ad.id),
+                                        //         // initialData: 0,
+                                        //         builder: (BuildContext context,
+                                        //             AsyncSnapshot snapshot) {
+                                        //           if (snapshot.hasError) {
+                                        //             return Text(
+                                        //               // '${snapshot.error}',
+                                        //               'error',
+                                        //             );
+                                        //           } else if (snapshot.hasData) {
+                                        //             return Text(
+                                        //               '${snapshot.data}',
+                                        //             );
+                                        //           } else {
+                                        //             return SizedBox(
+                                        //               height: 15,
+                                        //               width: 15,
+                                        //               child:
+                                        //                   CircularProgressIndicator(),
+                                        //             );
+                                        //           }
+                                        //         },
+                                        //       ),
+                                        //     ),
+                                        //     const SizedBox(width: 10),
+                                        //   ],
+                                        // ),
                                       ],
                                     ),
                                     const SizedBox(height: 10)
@@ -512,9 +512,6 @@ class _ValleyPageState extends State<ValleyPage> {
                             onPressed: () async {
                               // print(_commentController.text.runtimeType);
                               if (_formKey.currentState!.validate()) {
-                                setState(() {
-                                  _sending = true;
-                                });
                                 var data = {
                                   'content': _commentController.text,
                                   'ad_id': "$adId",
@@ -526,9 +523,6 @@ class _ValleyPageState extends State<ValleyPage> {
                                 );
                                 _commentController.clear();
                                 _userCommentedAdsFun();
-                                setState(() {
-                                  _sending = false;
-                                });
                                 Navigator.pop(context);
                               } else {
                                 print('Comment is null');
@@ -567,8 +561,9 @@ class _ValleyPageState extends State<ValleyPage> {
                                             children: [
                                               FutureBuilder<List<User>>(
                                                   future: fetchCommentOwner(
-                                                      http.Client(),
-                                                      comment.userId),
+                                                    http.Client(),
+                                                    comment.userId,
+                                                  ),
                                                   builder: (context, snapshot) {
                                                     if (snapshot.hasError) {
                                                       return Text(
@@ -605,22 +600,22 @@ class _ValleyPageState extends State<ValleyPage> {
                                                 color: Colors.black54,
                                                 itemBuilder: (context) {
                                                   return <PopupMenuItem>[
-                                                    // PopupMenuItem(
-                                                    //   child: TextButton.icon(
-                                                    //     onPressed: () =>
-                                                    //         print('Edit'),
-                                                    //     icon: Icon(Icons.edit),
-                                                    //     label: Text(
-                                                    //       'Edit',
-                                                    //       style: TextStyle(
-                                                    //         color: Colors.white,
-                                                    //         fontWeight:
-                                                    //             FontWeight.bold,
-                                                    //         fontSize: 18,
-                                                    //       ),
-                                                    //     ),
-                                                    //   ),
-                                                    // ),
+                                                    PopupMenuItem(
+                                                      child: TextButton.icon(
+                                                        onPressed: () =>
+                                                            print('Edit'),
+                                                        icon: Icon(Icons.edit),
+                                                        label: Text(
+                                                          'Edit',
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 18,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
                                                     PopupMenuItem(
                                                       child: TextButton.icon(
                                                         onPressed: () async {

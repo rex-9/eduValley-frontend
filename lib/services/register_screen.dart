@@ -257,7 +257,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       'password': password,
     };
 
-    var res = await Network().authData(data, '/apiregister');
+    var res = await Network().authData(data, '/register/api');
     var body = json.decode(res.body);
     if (body['status'] == "success") {
       SharedPreferences localStorage = await SharedPreferences.getInstance();

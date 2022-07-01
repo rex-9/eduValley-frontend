@@ -40,7 +40,7 @@ class _TeachersScreenState extends State<TeachersScreen> {
 
   _pluckGenres() async {
     final response = await http.get(Uri.parse(
-      '${Network.url}/pluckGenres',
+      '${Network.url}/genres/pluck',
     ));
     setState(() {
       _genres = jsonDecode(response.body);

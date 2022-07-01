@@ -30,10 +30,7 @@ Future<List<FreeVideo>> fetchFreeVideos(
   int courseId,
 ) async {
   final response = await client.get(
-    Uri.parse(
-      '${Network.url}/getFreevideos/'
-      '$courseId',
-    ),
+    Uri.parse('${Network.url}/freevideos/get/$courseId'),
   );
 
   // Use the compute function to run parseFreeVideos in a separate isolate.

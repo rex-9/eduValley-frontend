@@ -45,9 +45,7 @@ class Course {
 
 Future<List<Course>> fetchCourses(http.Client client) async {
   final response = await client.get(
-    Uri.parse(
-      '${Network.url}/getCourses',
-    ),
+    Uri.parse('${Network.url}/courses/get/'),
   );
 
   // Use the compute function to run parseCourses in a separate isolate.
@@ -59,10 +57,7 @@ Future<List<Course>> searchCourses(
   String search,
 ) async {
   final response = await client.get(
-    Uri.parse(
-      '${Network.url}/getCourses/'
-      '$search',
-    ),
+    Uri.parse('${Network.url}/courses/get/$search'),
   );
 
   // Use the compute function to run parseVideos in a separate isolate.

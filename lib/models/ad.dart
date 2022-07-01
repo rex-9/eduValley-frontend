@@ -28,7 +28,7 @@ class Ad {
 
 Future<List<Ad>> fetchAds(http.Client client) async {
   final response = await client.get(
-    Uri.parse('${Network.url}/getAds'),
+    Uri.parse('${Network.url}/ads/get/'),
   );
 
   // Use the compute function to run parseAds in a separate isolate.
@@ -40,10 +40,7 @@ Future<List<Ad>> searchAds(
   String category,
 ) async {
   final response = await client.get(
-    Uri.parse(
-      '${Network.url}/getAds/'
-      '$category',
-    ),
+    Uri.parse('${Network.url}/ads/get/$category'),
   );
 
   // Use the compute function to run parseVideos in a separate isolate.

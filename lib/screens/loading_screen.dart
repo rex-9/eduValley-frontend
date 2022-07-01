@@ -46,7 +46,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     print('token: $token');
     final currentUserResponse = await client.get(
       Uri.parse(
-        '${Network.url}/currentUser',
+        '${Network.url}/user/current',
       ),
       headers: {
         'Content-type': 'application/json',
@@ -67,7 +67,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
       final courseIdsResponse = await client.get(
         Uri.parse(
-          '${Network.url}/pluckCourseIds/$_userId',
+          '${Network.url}/courseIds/$_userId',
         ),
       );
       var courseIdsBody = jsonDecode(courseIdsResponse.body);
@@ -77,7 +77,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
       final genresResponse = await http.get(
         Uri.parse(
-          '${Network.url}/pluckGenres',
+          '${Network.url}/genres/pluck',
         ),
       );
       var genresBody = jsonDecode(genresResponse.body);
@@ -98,7 +98,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   // _loadUserData() async {
-  //   var res = await Network().getData('/currentUser');
+  //   var res = await Network().getData('/user/current');
   //   var body = jsonDecode(res.body);
   //   SharedPreferences localStorage = await SharedPreferences.getInstance();
   //   await localStorage.setString(
@@ -108,7 +108,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   //     _userId = _currentUser['id'];
   //   });
   //   print("_userId => $_userId");
-  //   var res2 = await Network().getData('/pluckCourseIds/$_userId');
+  //   var res2 = await Network().getData('/courseIds/$_userId');
   //   var body2 = jsonDecode(res2.body);
   //   await localStorage.setString('courseIds', json.encode(body2));
   //   _courseIds = await jsonDecode(localStorage.getString('courseIds')!);

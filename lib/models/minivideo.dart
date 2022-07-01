@@ -42,10 +42,7 @@ Future<List<Minivideo>> fetchMinivideos(
   int adId,
 ) async {
   final response = await client.get(
-    Uri.parse(
-      '${Network.url}/getMinivideos/'
-      '$adId',
-    ),
+    Uri.parse('${Network.url}/minivideos/get/$adId'),
   );
 
   // Use the compute function to run parseMinivideos in a separate isolate.

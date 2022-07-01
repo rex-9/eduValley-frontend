@@ -30,10 +30,7 @@ Future<List<Audio>> fetchAudios(
   int courseId,
 ) async {
   final response = await client.get(
-    Uri.parse(
-      '${Network.url}/getAudio/'
-      '$courseId',
-    ),
+    Uri.parse('${Network.url}/audio/get/$courseId'),
   );
 
   // Use the compute function to run parseAudios in a separate isolate.
