@@ -76,7 +76,12 @@ class _AudioPageState extends State<AudioPage> {
 
   @override
   void dispose() {
+    _player.pause();
+    _player.stop();
     _player.dispose();
+    print('fkk u');
+    print(_player.pause());
+    print(_player.stop());
     super.dispose();
   }
 
