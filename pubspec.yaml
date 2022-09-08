@@ -22,7 +22,7 @@ environment:
 
 dependencies:
   audio_session: ^0.1.5
-  cached_network_image: ^3.1.0
+  cached_network_image: ^3.2.0
   connectivity: ^3.0.6
   email_validator: ^2.0.1
   flutter:
@@ -33,9 +33,9 @@ dependencies:
   jitsi_meet: ^4.0.0
   just_audio: ^0.9.13
   just_audio_background: ^0.0.1-beta.1
-  native_updater: ^0.1.1
   rxdart: ^0.27.0
   shared_preferences: ^2.0.13
+  upgrader: ^4.6.1
   url_launcher: ^6.0.12
   video_player: ^2.2.5
   wakelock: ^0.5.6

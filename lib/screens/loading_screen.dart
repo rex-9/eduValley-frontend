@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:edu_valley/services/api.dart';
 import 'package:flutter/material.dart';
-import 'package:native_updater/native_updater.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:upgrader/upgrader.dart';
 
 import '../constants.dart';
 import 'package:http/http.dart' as http;
@@ -23,19 +23,19 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     // _loadUserData();
-    checkVersion();
+    // checkVersion();
     super.initState();
     // startTime();
   }
 
-  Future<void> checkVersion() async {
-    Future.delayed(Duration.zero, () {
-      NativeUpdater.displayUpdateAlert(
-        context,
-        forceUpdate: true,
-      );
-    });
-  }
+  // Future<void> checkVersion() async {
+  //   Future.delayed(Duration.zero, () {
+  //     NativeUpdater.displayUpdateAlert(
+  //       context,
+  //       forceUpdate: true,
+  //     );
+  //   });
+  // }
 
   Future fetchData(
     http.Client client,
@@ -166,34 +166,36 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: FutureBuilder<dynamic>(
-        future: fetchData(http.Client()),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                '${snapshot.error}',
-                // 'Data loading failed!',
-                style: TextStyle(
-                  color: Colors.blueGrey,
-                  fontSize: 20,
+      body: UpgradeAlert(
+        child: FutureBuilder<dynamic>(
+          future: fetchData(http.Client()),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Center(
+                child: Text(
+                  '${snapshot.error}',
+                  // 'Data loading failed!',
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 20,
+                  ),
                 ),
-              ),
-            );
-          } else if (snapshot.hasData) {
-            return EduValleyPage(
-              userId: _userId,
-              courseIds: _courseIds,
-              genres: _genres,
-            );
-          } else {
-            return Container(
-              color: Theme.of(context).primaryColor,
-              height: MediaQuery.of(context).size.height,
-              child: splashScreen,
-            );
-          }
-        },
+              );
+            } else if (snapshot.hasData) {
+              return EduValleyPage(
+                userId: _userId,
+                courseIds: _courseIds,
+                genres: _genres,
+              );
+            } else {
+              return Container(
+                color: Theme.of(context).primaryColor,
+                height: MediaQuery.of(context).size.height,
+                child: splashScreen,
+              );
+            }
+          },
+        ),
       ),
     );
   }
