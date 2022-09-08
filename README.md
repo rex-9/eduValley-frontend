@@ -66,8 +66,6 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-[Microverse](https://bit.ly/MicroverseTN)
-
 Login and Register page design idea by - [SaSa](https://github.com/rex-9/).
 
 Testing by - [Ko Paing](https://github.com/rex-9/).
