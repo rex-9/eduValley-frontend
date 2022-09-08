@@ -1,18 +1,73 @@
 # eduValley
 
-A new Flutter project.
+> eduValley is the online learning platform where teachers can upload their educational courses and students can study those courses.
+> eduValley also provides FREE UNLIMITED MEETING you can perfoem with all the people you love.
+> eduValley is userfriendly and easy to use android application for educational purposes.
+
+## Built With
+
+- Flutter
+- Jitsimeet
+
+## Screenshots
+
+![FlutterValley](./assets/img/FlutterValley.png)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To get a local copy up and running:
 
-A few resources to get you started if this is your first Flutter project:
+1. Clone this repository or download the zip folder:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+**`git clone https://github.com/rex-9/eduValley-flutter.git`**
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-"# eduValley" 
-"# eduValley" 
+2. Navigate to the location of the folder in your machine:
+
+**`you@your-Pc-name:~$ cd eduValley-flutter`**
+
+3. Open the project with VScode:
+
+**`code .`**
+
+4. Build the node packages:
+
+**`npm run build`**
+
+5. Run the server:
+
+**`npm start`**
+
+### Deployment
+
+You can download [eduValley](https://play.google.com/store/apps/details?id=com.eduValley.flutterValley) on Playstore.
+
+## Rex
+
+👤 - Github: [@rex-9](https://github.com/rex-9/)<br>
+👤 - Medium: [@rex9](https://medium.com/@rex9/)<br>
+👤 - LinkedIn: [@rex9](https://www.linkedin.com/in/rex9/)<br>
+👤 - Angelist: [@rex9](https://angel.co/u/rex9)<br>
+👤 - Facebook: [@htetnaing0814](https://www.facebook.com/htetnaing0814)<br>
+👤 - Twitter: [@htetnaing0814](https://www.twitter.com/htetnaing0814)<br>
+
+## 🤝 Contributions
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check [issue page](https://github.com/rex-9/eduValley-flutter/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+[Microverse](https://bit.ly/MicroverseTN)
+
+Login and Register page design idea by - [SaSa](https://github.com/rex-9/).
+
+Testing by - [Ko Paing](https://github.com/rex-9/).
+
+## 📝 License
+
+This project is [Creative Commons](https://creativecommons.org/licenses/by-nc/4.0/) licensed.
