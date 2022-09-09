@@ -35,15 +35,19 @@ To get a local copy up and running:
 
 4. Build the node packages:
 
-**`npm run build`**
+**`flutter pub get`**
 
 5. Run the server:
 
-**`npm start`**
+**`flutter run`**
 
 ### Deployment
 
 You can download [eduValley](https://play.google.com/store/apps/details?id=com.eduValley.flutterValley) on Playstore.
+
+### The BACKEND part of eduValley
+
+Check the BACKEND part of eduValley [here](https://github.com/rex-9/eduValley-laravel).
 
 ## Rex
 
