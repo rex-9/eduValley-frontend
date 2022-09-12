@@ -70,7 +70,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-Login and Register page design idea by - [SaSa](https://github.com/rex-9/).
+Login and Register page design idea by - [SaSa](https://github.com/aghtetnyein/).
 
 Testing by - [Ko Paing](https://github.com/rex-9/).
 
