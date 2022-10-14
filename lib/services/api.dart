@@ -3,8 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Network {
-  static final String url = 'https://eduvalley.co.ke/api';
-  // static final String url = 'https://rextutor.manishchudasama.com/api';
+  // static final String url = 'https://eduvalley.co.ke/api';
+  static final String url = 'https://rextutor.manishchudasama.com/api';
   // static final String url = 'http://10.0.2.2:8000/api';
   //if you are using android studio emulator, change localhost to 10.0.2.2
   var token;
